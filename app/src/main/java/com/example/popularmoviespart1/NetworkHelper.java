@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class NetworkHelper {
     final static String MOVIE_DB_BASE_URL = "https://api.themoviedb.org/3/movie";
     final static String PARAM_API_KEY = "api_key";
-    final static String API_KEY = "67873095b3c8a37ad224fbaf531f3b55";
+    final static String API_KEY = ""; // removed API key :)
     final static String LANGUAGE = "language";
     final static String LANGUAGE_REGION = "en-US";
 
