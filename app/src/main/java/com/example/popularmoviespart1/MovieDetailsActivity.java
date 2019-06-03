@@ -1,10 +1,13 @@
 package com.example.popularmoviespart1;
 
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +31,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -77,6 +81,8 @@ public class MovieDetailsActivity extends AppCompatActivity implements TrailerAd
         // favorite movies
         favorites = findViewById(R.id.add_to_favorites);
         mDb = MovieDataBase.getInstance(getApplicationContext());
+
+        retrieveFavoriteMovies();
 
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -257,6 +263,15 @@ public class MovieDetailsActivity extends AppCompatActivity implements TrailerAd
     private void closeOnError(String msg) {
         finish();
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    private void retrieveFavoriteMovies() {
+        final LiveData<List<FavoriteMovie>> tasks = mDb.movieDao().loadAllMovies();
+        tasks.observe(this, new Observer<List<FavoriteMovie>>() {
+            @Override
+            public void onChanged(@Nullable List<FavoriteMovie> favoriteMovies) {
+            }
+        });
     }
 }
 
