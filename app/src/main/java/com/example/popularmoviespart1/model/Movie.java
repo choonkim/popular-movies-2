@@ -1,21 +1,24 @@
-package com.example.popularmoviespart1;
+package com.example.popularmoviespart1.model;
+
+import java.io.Serializable;
 
 // sandwich club
-public class Movie {
+public class Movie implements Serializable {
 
-    String title, poster, releaseDate, rated, overview;
+    String title, poster, releaseDate, rated, overview, id;
 
     // constructor
     // sandwich app
     public Movie() {
     }
 
-    public Movie(String title, String poster, String releaseDate, String rated, String overview) {
+    public Movie(String id, String title, String releaseDate, String rated, String overview, String poster) {
+        this.id = id;
         this.title = title;
-        this.poster = poster;
         this.releaseDate = releaseDate;
         this.rated = rated;
         this.overview = overview;
+        this.poster = poster;
     }
 
     public String getTitle() {
@@ -50,12 +53,21 @@ public class Movie {
         this.rated = rated;
     }
 
-    public String getAbout() {
+    public String getOverview() {
         return overview;
     }
 
-    public void setAbout(String overview) {
+    public void setOverview(String overview) {
         this.overview = overview;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.title = id;
+    }
+
 }
 

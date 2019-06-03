@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Popular Movies Part 1</string>
+    <string name="app_name">Popular Movies Part 2</string>
+    <string name="add_to_favorites">Add To Favorites</string>
 </resources>

@@ -2,6 +2,8 @@ package com.example.popularmoviespart1;
 
 import android.content.Context;
 
+import com.example.popularmoviespart1.model.Movie;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -33,7 +35,7 @@ public class MovieMetaData {
             movie.setTitle(title);
             movie.setReleaseDate(release_date);
             movie.setRated(vote_average);
-            movie.setAbout(overview);
+            movie.setOverview(overview);
             movieResults[i] = movie;
         }
         return movieResults;

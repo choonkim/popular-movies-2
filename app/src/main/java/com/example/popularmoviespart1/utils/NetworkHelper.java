@@ -1,4 +1,4 @@
-package com.example.popularmoviespart1;
+package com.example.popularmoviespart1.utils;
 
 import android.net.Uri;
 
@@ -15,15 +15,13 @@ import java.util.Scanner;
 public class NetworkHelper {
     final static String MOVIE_DB_BASE_URL = "https://api.themoviedb.org/3/movie";
     final static String PARAM_API_KEY = "api_key";
-    final static String API_KEY = ""; // removed API key :)
-    final static String LANGUAGE = "language";
-    final static String LANGUAGE_REGION = "en-US";
+    final static String BASE_URL = "http://image.tmdb.org/t/p/";
+    private final static String WIDTH = "w500";
 
-    public static URL buildUrl(String theMovieDbSearchQuery) {
-        Uri builtUri = Uri.parse(MOVIE_DB_BASE_URL).buildUpon()
+    public static URL buildUrl(String theMovieDbSearchQuery, String apiKey) {
+        Uri builtUri = Uri.parse(MOVIE_DB_BASE_URL).buildUpon() // this may or may not need to be updated!!!
                 .appendEncodedPath(theMovieDbSearchQuery)
-                .appendQueryParameter(PARAM_API_KEY, API_KEY)
-                .appendQueryParameter(LANGUAGE, LANGUAGE_REGION)
+                .appendQueryParameter(PARAM_API_KEY, apiKey)
                 .build();
 
         URL url = null;
@@ -54,5 +52,9 @@ public class NetworkHelper {
         }
     }
 
+    public static String buildPosterUrl(String poster) {
+        String finalPath = BASE_URL + WIDTH + "/" + poster;
+        return finalPath;
+    }
 }
 
