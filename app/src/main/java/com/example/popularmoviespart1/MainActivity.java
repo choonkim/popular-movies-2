@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.List
         viewModel.getMovies().observe(this, new Observer<List<FavoriteMovie>>() {
             @Override
             public void onChanged(@Nullable List<FavoriteMovie> favs) {
-                if(favs.size()>0) {
+                if(favs.size() >= 0) {
                     favMovs.clear();
                     favMovs = favs;
                 }
